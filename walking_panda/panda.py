@@ -34,6 +34,10 @@ class WalkingPanda(ShowBase):
         # Loop its animation.
         self.pandaActor.loop("walk")
 
+        #play sound
+        self.backgroundMusic = self.loader.loadSfx("sound/Great_Escape.mp3")
+        self.backgroundMusic.play()
+
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
         angleDegrees = task.time * 6.0
