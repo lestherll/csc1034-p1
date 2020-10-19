@@ -5,7 +5,7 @@ from direct.task import Task
 from direct.actor.Actor import Actor
 
 
-class MyApp(ShowBase):
+class WalkingPanda(ShowBase):
 
     def __init__(self):
         ShowBase.__init__(self)
@@ -38,5 +38,5 @@ class MyApp(ShowBase):
         return Task.cont
 
 
-app = MyApp()
-app.run()
+walking = WalkingPanda()
+walking.run()
