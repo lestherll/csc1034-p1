@@ -7,7 +7,7 @@ from direct.actor.Actor import Actor
 
 class WalkingPanda(ShowBase):
 
-    def __init__(self, no_rotate=False):
+    def __init__(self, no_rotate=False, scale=0.005):
         ShowBase.__init__(self)
 
         # Load the environment model.
@@ -29,14 +29,16 @@ class WalkingPanda(ShowBase):
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
                                 {"walk": "models/panda-walk4"})
-        self.pandaActor.setScale(0.005, 0.005, 0.005)
+        self.pandaActor.setScale(scale, scale, scale)
         self.pandaActor.reparentTo(self.render)
+
         # Loop its animation.
         self.pandaActor.loop("walk")
 
-        #play sound
+        # play sound
         self.backgroundMusic = self.loader.loadSfx("sound/Great_Escape.mp3")
         self.backgroundMusic.play()
+        self.backgroundMusic.setVolume(0.5)
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
@@ -45,8 +47,6 @@ class WalkingPanda(ShowBase):
         self.camera.setPos(20 * sin(angleRadians), -20.0 * cos(angleRadians), 3)
         self.camera.setHpr(angleDegrees, 0, 0)
         return Task.cont
-
-
 
 
 # walking = WalkingPanda()
