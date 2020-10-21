@@ -7,7 +7,7 @@ from direct.actor.Actor import Actor
 
 class WalkingPanda(ShowBase):
 
-    def __init__(self, no_rotate=False, anti_clockwise=False, scale=1, size=0.005):
+    def __init__(self, no_rotate=False, anti_clockwise=False, top_view=False, scale=1, size=0.005):
         ShowBase.__init__(self)
 
         # make parameters attribute so it can be accessed by instances
@@ -18,7 +18,7 @@ class WalkingPanda(ShowBase):
         # will rotate if --no-rotate is False
         self.multiplier = -1 if anti_clockwise is True else 1
 
-        # calculate actual size
+        # calculate actual size of the panda actor
         self.scale = scale
         self.size = size
         self.actualSize = self.scale * self.size
@@ -37,7 +37,7 @@ class WalkingPanda(ShowBase):
             self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
         else:
             # Default view
-            base.trackball.node().setPos(0, 20, -3)
+            self.setDefaultView()
 
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
@@ -61,6 +61,5 @@ class WalkingPanda(ShowBase):
         self.camera.setHpr(self.multiplier * angleDegrees, 0, 0)
         return Task.cont
 
-
-# walking = WalkingPanda()
-# walking.run()
+    def setDefaultView(self):
+        base.trackball.node().setPos(0, 20, -3)
