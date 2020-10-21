@@ -10,6 +10,8 @@ class WalkingPanda(ShowBase):
     def __init__(self, no_rotate=False, anti_clockwise=False, scale=1, size=0.005):
         ShowBase.__init__(self)
 
+        self.multiplier = -1 if anti_clockwise is True else False
+
         # Load the environment model.
         self.scene = self.loader.loadModel("models/environment")
         # Reparent the model to render.
@@ -44,8 +46,8 @@ class WalkingPanda(ShowBase):
     def spinCameraTask(self, task):
         angleDegrees = task.time * 6.0
         angleRadians = angleDegrees * (pi / 180.0)
-        self.camera.setPos(20 * sin(angleRadians), -20.0 * cos(angleRadians), 3)
-        self.camera.setHpr(angleDegrees, 0, 0)
+        self.camera.setPos(self.multiplier*20 * sin(angleRadians), -20.0 * cos(angleRadians), 3)
+        self.camera.setHpr(self.multiplier*angleDegrees, 0, 0)
         return Task.cont
 
 
