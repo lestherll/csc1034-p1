@@ -6,18 +6,29 @@ import argparse
 def cli():
     parser = argparse.ArgumentParser(prog="walking_panda")
 
-    # argument for suppressing rotation
+    # option for suppressing rotation
     parser.add_argument("--no-rotate",
-                        help="Suppress Rotation",
-                        action="store_true")
+                        action="store_true",
+                        help="Suppress Rotation")
 
-    # argument for setting the size of the panda
+    # option for allowing the program to rotate in anti-clockwise manner
+    parser.add_argument("--anti-clockwise",
+                        action="store_true",
+                        help="Set rotation to anti-clockwise")
+
+    # option for scaling the panda
     parser.add_argument("--scale",
                         type=float,
                         action="store",
-                        default=0.005,
-                        help="Set scale of the panda")
+                        default=1,
+                        help="Scale panda size by a factor of SCALE")
 
+    # option for setting the default size of the panda
+    parser.add_argument("--size",
+                        type=float,
+                        action="store",
+                        default=0.005,
+                        help="Set the default size(0.005) of panda to SIZE")
 
     args = parser.parse_args()
 

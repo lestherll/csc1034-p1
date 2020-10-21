@@ -7,7 +7,7 @@ from direct.actor.Actor import Actor
 
 class WalkingPanda(ShowBase):
 
-    def __init__(self, no_rotate=False, scale=0.005):
+    def __init__(self, no_rotate=False, anti_clockwise=False, scale=1, size=0.005):
         ShowBase.__init__(self)
 
         # Load the environment model.
@@ -29,7 +29,7 @@ class WalkingPanda(ShowBase):
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
                                 {"walk": "models/panda-walk4"})
-        self.pandaActor.setScale(scale, scale, scale)
+        self.pandaActor.setScale(size*scale, size*scale, size*scale)
         self.pandaActor.reparentTo(self.render)
 
         # Loop its animation.
