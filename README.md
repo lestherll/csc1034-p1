@@ -37,3 +37,5 @@ This shows the top-view of the panda.
 #### Size related
 - `--scale x` 
 This scales the size of the panda by **x** factor.
+- `--size x`
+This overrides the default size(0.005) of the actor panda.
