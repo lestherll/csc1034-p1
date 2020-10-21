@@ -10,7 +10,18 @@ class WalkingPanda(ShowBase):
     def __init__(self, no_rotate=False, anti_clockwise=False, scale=1, size=0.005):
         ShowBase.__init__(self)
 
-        self.multiplier = -1 if anti_clockwise is True else False
+        # make parameters attribute so it can be accessed by instances
+        self.no_rotate = no_rotate
+        self.anti_clockwise = anti_clockwise
+
+        # this attribute dictates which way the camera
+        # will rotate if --no-rotate is False
+        self.multiplier = -1 if anti_clockwise is True else 1
+
+        # calculate actual size
+        self.scale = scale
+        self.size = size
+        self.actualSize = self.scale * self.size
 
         # Load the environment model.
         self.scene = self.loader.loadModel("models/environment")
@@ -31,7 +42,7 @@ class WalkingPanda(ShowBase):
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
                                 {"walk": "models/panda-walk4"})
-        self.pandaActor.setScale(size*scale, size*scale, size*scale)
+        self.pandaActor.setScale(self.actualSize, self.actualSize, self.actualSize)
         self.pandaActor.reparentTo(self.render)
 
         # Loop its animation.
@@ -46,8 +57,8 @@ class WalkingPanda(ShowBase):
     def spinCameraTask(self, task):
         angleDegrees = task.time * 6.0
         angleRadians = angleDegrees * (pi / 180.0)
-        self.camera.setPos(self.multiplier*20 * sin(angleRadians), -20.0 * cos(angleRadians), 3)
-        self.camera.setHpr(self.multiplier*angleDegrees, 0, 0)
+        self.camera.setPos(self.multiplier * 20 * sin(angleRadians), -20.0 * cos(angleRadians), 3)
+        self.camera.setHpr(self.multiplier * angleDegrees, 0, 0)
         return Task.cont
 
 
