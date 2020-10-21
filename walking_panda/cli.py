@@ -16,6 +16,11 @@ def cli():
                         action="store_true",
                         help="Set rotation to anti-clockwise")
 
+    # option for top view orientation
+    parser.add_argument("--top-view",
+                        action="store_true",
+                        help="Set camera orientation to top view")
+
     # option for scaling the panda
     parser.add_argument("--scale",
                         type=float,
