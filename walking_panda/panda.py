@@ -37,7 +37,7 @@ class WalkingPanda(ShowBase):
             self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
         else:
             # Default view
-            self.setDefaultView()
+            self.setDefaultView() if top_view is False else self.setTopView()
 
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
@@ -63,3 +63,7 @@ class WalkingPanda(ShowBase):
 
     def setDefaultView(self):
         base.trackball.node().setPos(0, 20, -3)
+
+    def setTopView(self):
+        base.trackball.node().setPos(0, 20, 0)
+        base.trackball.node().setHpr(0, 90, 0)
