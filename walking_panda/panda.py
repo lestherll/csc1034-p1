@@ -31,13 +31,17 @@ class WalkingPanda(ShowBase):
         self.scene.setScale(0.25, 0.25, 0.25)
         self.scene.setPos(-8, 42, 0)
 
+        # Set default view every time
+        self.setDefaultView()
+
         # Check if --no-rotate param was passed
         if no_rotate is False:
             # Add the spinCameraTask procedure to the task manager.
             self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
-        else:
-            # Default view
-            self.setDefaultView() if top_view is False else self.setTopView()
+
+        # Override default view and set to top view if --top-view is called
+        if top_view is True:
+            self.setTopView()
 
         # Load and transform the panda actor.
         self.pandaActor = Actor("models/panda-model",
