@@ -7,7 +7,8 @@ This package is built as a part of the CSC1034: Portfolio-1.
 ```shell
 python walking_panda.py [--optional_parameter_1] [optional_value_1] [--optional_parameter_n] [optional_value_n]
 ```
-Adding optional parameters or arguments when running the program in CLI is in the form that is shown above. Note that arguments will not always have values that must be provided. An example is shown below.
+Adding optional parameters or arguments when running the program in CLI is in the form that is shown above. 
+Note that arguments will not always have values that must be provided. An example is shown below.
 
 #### Examples
 ```shell
@@ -23,7 +24,8 @@ The example above scales the size of the actor Panda by a factor of 2 or twice. 
 ```shell
 python walking_panda.py --scale 2 --no-rotate
 ```
-It is also possible to have multiple arguments at once. You must, however, be careful since some arguments don't work together. For example, calling `--anti-clockwise` will not have any effect if `--no-rotate` was also called.
+It is also possible to have multiple arguments at once. You must, however, be careful since some arguments don't work together. 
+For example, calling `--anti-clockwise` will not have any effect if `--no-rotate` was also called.
 
 ### List of Optional Parameters
 #### Camera related
@@ -39,3 +41,7 @@ This shows the top-view of the panda.
 This scales the size of the panda by **x** factor.
 - `--size x`
 This overrides the default size(0.005) of the actor panda.
+
+#### Others
+- `--no-panda`
+This makes the program to render without the panda.

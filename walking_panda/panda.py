@@ -7,12 +7,14 @@ from direct.actor.Actor import Actor
 
 class WalkingPanda(ShowBase):
 
-    def __init__(self, no_rotate=False, anti_clockwise=False, top_view=False, scale=1, size=0.005):
+    def __init__(self, no_rotate=False, anti_clockwise=False, top_view=False, scale=1, size=0.005, no_panda=False):
         ShowBase.__init__(self)
 
         # make parameters attribute so it can be accessed by instances
         self.no_rotate = no_rotate
         self.anti_clockwise = anti_clockwise
+        self.top_view = top_view
+        self.no_panda = no_panda
 
         # this attribute dictates which way the camera
         # will rotate if --no-rotate is False
@@ -35,22 +37,20 @@ class WalkingPanda(ShowBase):
         self.setDefaultView()
 
         # Check if --no-rotate param was passed
-        if no_rotate is False:
+        if self.no_rotate is False:
             # Add the spinCameraTask procedure to the task manager.
             self.taskMgr.add(self.spinCameraTask, "SpinCameraTask")
 
         # Override default view and set to top view if --top-view is called
-        if top_view is True:
+        if self.top_view is True:
             self.setTopView()
 
         # Load and transform the panda actor.
-        self.pandaActor = Actor("models/panda-model",
-                                {"walk": "models/panda-walk4"})
-        self.pandaActor.setScale(self.actualSize, self.actualSize, self.actualSize)
-        self.pandaActor.reparentTo(self.render)
+        if self.no_panda is False:
+            self.setPanda()
 
-        # Loop its animation.
-        self.pandaActor.loop("walk")
+            # Loop walking animation.
+            self.pandaActor.loop("walk")
 
         # play sound
         self.backgroundMusic = self.loader.loadSfx("sound/Great_Escape.mp3")
@@ -71,3 +71,10 @@ class WalkingPanda(ShowBase):
     def setTopView(self):
         base.trackball.node().setPos(0, 20, 0)
         base.trackball.node().setHpr(0, 90, 0)
+
+    # Method to render panda
+    def setPanda(self):
+        self.pandaActor = Actor("models/panda-model",
+                                {"walk": "models/panda-walk4"})
+        self.pandaActor.setScale(self.actualSize, self.actualSize, self.actualSize)
+        self.pandaActor.reparentTo(self.render)

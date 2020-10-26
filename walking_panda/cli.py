@@ -35,6 +35,10 @@ def cli():
                         default=0.005,
                         help="Set the default size(0.005) of panda to SIZE")
 
+    parser.add_argument("--no-panda",
+                        action="store_true",
+                        help="Disable panda graphic")
+
     args = parser.parse_args()
 
     walking = panda.WalkingPanda(**vars(args))
