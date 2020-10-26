@@ -25,16 +25,18 @@ The example above scales the size of the actor Panda by a factor of 2 or twice. 
 python walking_panda.py --scale 2 --no-rotate
 ```
 It is also possible to have multiple arguments at once. You must, however, be careful since some arguments don't work together. 
-For example, calling `--anti-clockwise` will not have any effect if `--no-rotate` was also called.
+For example, calling `--anti-clockwise` will not have any effect if `--no-rotate` was also passed because the camera is not rotating at all.
 
 ### List of Optional Parameters
 #### Camera related
 - `--no-rotate` 
-This disables the camera rotation and sets the camera to default view that I have set when starting the program
+This disables the camera rotation and sets the camera to default view that I have set when starting the program.
 - `--anti-clockwise` 
-This rotates the camera in the other direction. The program will not do anything if `--no-rotate` was called.
+This rotates the camera in the other direction. The program will not do anything if `--no-rotate` was passed.
 - `--top-view` 
-This shows the top-view of the panda.
+This shows the top-view of the panda. This will not work unless `--no-rotate` is passed because the rotation method, `spinCameraTask()` , is currently a **task**.
+This means that it will get called every frame allowing `setTopView()` to only get called during initialisation/start of program.
+In other words, `spinCameraTask()` controls the camera view every frame not allowing `setTopView()` to do anything for the rest of the runtime.
 
 #### Size related
 - `--scale x` 
