@@ -10,7 +10,7 @@ Things that I have noticed whilst using git is that forces you to document every
 It forces you to write in a modular way; breaking tasks into atomic levels, meaning a method is non-dependent of other methods.
 It forces you to document all features that you have implemented which is a very good thing because the project is easier to understand as a whole.
 Good documentation enables potential users to easily learn the project or module.
-With all that being said, git unintentionally gives a lot of development skills that will help manage project in a more organised, manageable way. 
+Git unintentionally provides a lot of development skills that will help manage projects in a more organised, manageable way in the future. 
 
 Argparse is something I haven't come across in the past. 
 I have tinkered with sys.argv in python before which certainly made using argparse so much easier since the principle is the same. 
