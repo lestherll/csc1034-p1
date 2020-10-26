@@ -7,8 +7,10 @@ Pandas3d was a little bit more tricky for me at the beginning especially the ang
 I want to talk about git first; I think that this tool is very powerful since it solves a lot of problems that may come up during the development of a project mainly, version control.
 Learning the most basic commands for git has a massive impact on your development skills and gives you advantages that you would not be able to find in any other tools. 
 Things that I have noticed whilst using git is that forces you to document every major change and addition to your project.
+It forces you to write in a modular way; breaking tasks into atomic levels, meaning a method is non-dependent of other methods.
 It forces you to document all features that you have implemented which is a very good thing because the project is easier to understand as a whole.
-Good documentation enables potential users to easily learn the project or module. 
+Good documentation enables potential users to easily learn the project or module.
+With all that being said, git unintentionally gives a lot of development skills that will help manage project in a more organised, manageable way. 
 
 Argparse is something I haven't come across in the past. 
 I have tinkered with sys.argv in python before which certainly made using argparse so much easier since the principle is the same. 
