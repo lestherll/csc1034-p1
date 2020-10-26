@@ -16,12 +16,12 @@ python walking_panda.py --no-rotate
 The example above allows the program to disable rotation at the start of the program. As you can see, no value was provided.
 
 ```shell
-python walking_panda.py scale 2
+python walking_panda.py --scale 2
 ```
 The example above scales the size of the actor Panda by a factor of 2 or twice. Notice that here, a value was and must be provided.
 
 ```shell
-python walking_panda.py scale 2
+python walking_panda.py --scale 2 --no-rotate
 ```
 It is also possible to have multiple arguments at once. You must, however, be careful since some arguments don't work together. For example, calling `--anti-clockwise` will not have any effect if `--no-rotate` was also called.
 
