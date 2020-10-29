@@ -52,8 +52,9 @@ class WalkingPanda(ShowBase):
             # Loop walking animation.
             self.pandaActor.loop("walk")
 
-        # play sound
-        self.backgroundMusic = self.loader.loadSfx("sound/Great_Escape.mp3")
+        # play and loop sound
+        self.backgroundMusic = self.loader.loadSfx("sound/Forest-ambience.mp3")
+        self.backgroundMusic.setLoop(True)
         self.backgroundMusic.play()
         self.backgroundMusic.setVolume(0.5)
 
