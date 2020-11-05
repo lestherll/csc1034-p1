@@ -1,7 +1,8 @@
 # CSC1034: Practical 1
 
 ## Intro
-This package is built as a part of the CSC1034: Portfolio-1.
+This package is built as a part of the CSC1034: Portfolio-1. 
+This programs displays a scence with a panda in its natural habitat.
 
 ## Usage
 ```shell
@@ -42,7 +43,8 @@ In other words, `spinCameraTask()` controls the camera view every frame not allo
 - `--scale x` 
 This scales the size of the panda by **x** factor.
 - `--size x`
-This overrides the default size(0.005) of the actor panda.
+This overrides the default size(0.005) of the actor panda. 
+I have added this only to work with `--scale` since scale works as a multiplier for the actual size passed to pandaActor.setScale().
 
 #### Others
 - `--no-panda`
