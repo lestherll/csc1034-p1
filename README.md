@@ -32,8 +32,10 @@ For example, calling `--anti-clockwise` will not have any effect if `--no-rotate
 #### Camera related
 - `--no-rotate` 
 This disables the camera rotation and sets the camera to default view that I have set when starting the program.
-- `--anti-clockwise` 
-This rotates the camera in the other direction. The program will not do anything if `--no-rotate` was passed.
+- `--rot-speed` 
+This controls the rotation speed of the camera.
+Passing negative values will rotate the camera in the other direction.
+The program will not do anything if `--no-rotate` was passed.
 - `--top-view` 
 This shows the top-view of the panda. This will not work unless `--no-rotate` is passed because the rotation method, `spinCameraTask()` , is currently a **task**.
 This means that it will get called every frame allowing `setTopView()` to only get called during initialisation/start of program.

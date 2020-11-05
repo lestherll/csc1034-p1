@@ -7,12 +7,11 @@ from direct.actor.Actor import Actor
 
 class WalkingPanda(ShowBase):
 
-    def __init__(self, no_rotate=False, anti_clockwise=False, top_view=False, scale=1, size=0.005, no_panda=False,):
+    def __init__(self, no_rotate=False, rot_speed=1.0, top_view=False, scale=1.0, size=0.005, no_panda=False,):
         ShowBase.__init__(self)
 
         # make parameters attribute so it can be accessed by instances
         self.no_rotate = no_rotate
-        self.anti_clockwise = anti_clockwise
         self.top_view = top_view
         self.no_panda = no_panda
 
@@ -21,9 +20,9 @@ class WalkingPanda(ShowBase):
         self.size = size
         self.actual_size = self.scale * self.size
 
-        # this attribute dictates which way the camera
-        # will rotate if --no-rotate is False
-        self.multiplier = -1 if anti_clockwise is True else 1
+        # this attribute dictates which way and how fast the camera
+        # will rotate if --no-rotate is not passed(False)
+        self.rot_speed = rot_speed
 
         # sound attributes
         self.loop_bg_sound = True
@@ -66,7 +65,7 @@ class WalkingPanda(ShowBase):
 
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
-        angleDegrees = task.time * 6.0 * self.multiplier
+        angleDegrees = task.time * 6.0 * self.rot_speed
         angleRadians = angleDegrees * (pi / 180.0)
         self.camera.setPos(20 * sin(angleRadians), -20.0 * cos(angleRadians), 3)
         self.camera.setHpr(angleDegrees, 0, 0)
