@@ -2,7 +2,7 @@
 
 ## Intro
 This package is built as a part of the CSC1034: Portfolio-1. 
-This programs displays a scence with a panda in its natural habitat.
+This programs displays a scene with a panda in its natural habitat.
 
 ## Usage
 ```shell
